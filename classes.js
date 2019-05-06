@@ -30,7 +30,21 @@
 */
 
 //Code Here
+class Employee{
+  constructor(first_name,last_name,email,age){
+        this.first_name = first_name
+       this.last_name = last_name
+        this.name = name
+        this.email = email
+        this.age = age
 
+}    
+
+      makeWidget(){
+        return this.first_name + " "+ this.last_name + " " + 'Widget'
+      }
+
+    }
 
 ////////// PROBLEM 2 //////////
 
@@ -49,6 +63,19 @@
 
 //Code Here
 
+class Manager extends Employee{
+  constructor(first_name, last_name, email,age){
+      super(first_name,last_name,email,age)
+      this.reports = []    
+  }
+      hire(Employee){
+        this.reports.push(Employee)
+      }
+      fire(index){
+        this.reports.splice(index,1)
+      }
+}
+
 
 ////////// PROBLEM 3 //////////
 
@@ -59,7 +86,7 @@
     - bonus - default 0
 
   When employees are hired or fired, the manager's title should be updated based on the number of reports.
-    0 reports : Not a manager
+    0 reports : 'Not a manager'
     1-3 reports : Barely Manager
     4-10 reports : Mostly Manager
     11-50 reports : Manager
@@ -72,6 +99,37 @@
 */
 
 //Code Here
+
+class ProgressiveManager extends Employee{
+  constructor(first_name, last_name, email,age){
+    super(first_name,last_name,email,age)
+    this.reports = []  
+    this.title =  'Not a manager'
+    this.bonus = 0
+}
+    hire(employee){
+      this.reports.push(employee)
+      if(this.reports.length === 0){
+        this.title
+      } else if (this.reports.length >=1 && this.reports.length <=3 ){
+        this.title = 'Barely Manager'
+      } else if (this.reports.length >=4 && this.reports.length <=10 ){
+        this.title =  'Mostly Manager'
+      } else if (this.reports.length >=12 && this.reports.length <=51){
+        this.title = 'Manager'
+      } else if (this.reports.length >=51 && this.reports.length <= 100){
+        this.title = 'Manager Plus'
+      } else if (this.reports.length >100){
+        this.title = 'Bestest Manager'
+      }
+    }
+    fire(index){
+      this.reports.splice(index,1)
+      this.bonus += 100
+    }
+}
+
+
 
 
 
@@ -99,5 +157,7 @@
 */
 
 //Code Here
+
+
 
 
